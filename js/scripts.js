@@ -19,7 +19,6 @@ function validateForm(e) {
     validateFirstName() &&
     validateLastName()
   ) {
-    
     var _newUser = getUserName();
     // add code to update registeredUsers array with new user and call render function
     // TODO
@@ -100,6 +99,12 @@ function validatePassword() {
   }
   if (_password !== _confirmPassword) {
     console.log("password does not match");
+    return false;
+  }
+  if (checkForNumber(_password) === false) {
+    return false;
+  }
+  if (!checkForCapitalLetter(_password)) {
     return false;
   }
 
@@ -184,11 +189,31 @@ function getPhonenumber() {
 function validateFirstName() {
   var _firstName = getFirstName();
 
-  return (_firstName !== '');
+  return _firstName !== "";
 }
 
 function validateLastName() {
   var _lastName = getLastName();
 
-  return (_lastName !== '');
+  return _lastName !== "";
+}
+
+function checkForNumber(sample) {
+  const _regex = /[0-9]+/g;
+  const _found = sample.match(_regex);
+
+  if (_found === null) {
+    return false;
+  }
+  return true;
+}
+
+function checkForCapitalLetter(sample) {
+  const _regex = /[A-ZÅÄÖ]/g;
+  const _found = sample.match(_regex);
+
+  if (_found === null) {
+    return false;
+  }
+  return true;
 }
