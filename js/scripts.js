@@ -12,7 +12,14 @@ function validateForm(e) {
   console.log("first name: " + validateFirstName());
   console.log("last name: " + validateLastName());
 
-  if (validateUsername() && validateEmail() && validatePassword() && validateFirstName() && validateLastName()) {
+  if (
+    validateUsername() &&
+    validateEmail() &&
+    validatePassword() &&
+    validateFirstName() &&
+    validateLastName()
+  ) {
+    
     var _newUser = getUserName();
     // add code to update registeredUsers array with new user and call render function
     // TODO
@@ -177,19 +184,11 @@ function getPhonenumber() {
 function validateFirstName() {
   var _firstName = getFirstName();
 
-  if (_firstName === "") {
-    console.log("first name required");
-    return false;
-  }
-  return true;
+  return (_firstName !== '');
 }
 
 function validateLastName() {
   var _lastName = getLastName();
 
-  if (_lastName === "") {
-    console.log("last name required");
-    return false;
-  }
-  return true;
+  return (_lastName !== '');
 }
