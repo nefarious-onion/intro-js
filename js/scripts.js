@@ -1,13 +1,5 @@
 console.log("Hello again");
 
-<<<<<<< Updated upstream
-var a = 1;
-var b = 2;
-
-var c = a + b;
-
-}
-=======
 function validateForm(e) {
   e.preventDefault(); // stop the submit button from refreshing the page
   console.log("validating....");
@@ -199,4 +191,3 @@ function validateLastName() {
   }
   return true;
 }
->>>>>>> Stashed changes
