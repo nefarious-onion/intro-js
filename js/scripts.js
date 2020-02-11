@@ -44,3 +44,32 @@ function doAjaxCall(searchTerm) {
         handleResponse
     );
 }
+
+// function clickAlert() {
+//     alert("You searched: " + document.searchBar.searchQuery.value);
+// } 
+
+$(document).ready(function() {
+    $('[name="searchButton"]').click(function() {
+        console.log('User has entered ' + document.searchBar.searchQuery.value);
+
+        $.ajax({ //ajax call
+            url: '//api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?',
+            dataType: 'json',
+            data: { // search parameters defined in documentation
+                tags: document.searchBar.searchQuery.value, //user input
+                tagmode: 'any',
+                format: 'json'
+            }
+        }).done(function(data) {
+            console.log(data);
+            $('#imageWrapper').empty(); //empties div with class imageWrapper
+
+            data.items.forEach(function(item) {
+                $('#imageWrapper').append('<img src=' + item.media.m + '></img>');
+            });
+           
+        });
+    });   
+});
+
