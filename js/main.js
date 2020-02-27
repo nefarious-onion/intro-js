@@ -215,3 +215,53 @@
 
 
 })(jQuery);
+
+const eventTarget1 = document.querySelector('#popup1');
+const mouseTarget = document.querySelector('h1');
+
+const xButton = document.querySelector('[id="popup1"] [class="close"]');
+
+function makeVisible(){
+  eventTarget1.style.visibility = 'visible';
+}
+function makeInvisible(){
+  eventTarget1.style.visibility = 'hidden';
+}
+
+mouseTarget.addEventListener('mouseleave', makeVisible);
+xButton.addEventListener('click', makeInvisible);
+
+const submitButton = document.querySelector('[id="frm_subscribe"] [class="button"]');
+const eventTarget2 = document.querySelector('#popup2');
+
+
+submitButton.addEventListener('click', function() {
+  var userInput = document.querySelector('#subscribe_pemail').subscribe_pemail;
+
+  var validationResult = validateEmail(userInput);
+  console.log('button pushed');
+
+  if (validationResult === true) {
+    eventTarget1.style.visibility = 'hidden';
+    eventTarget2.style.visibility = 'visible';
+  }
+
+});
+
+function validateEmail(email) {
+  return email.includes('@');
+}
+
+// function submitEmail() {
+//     if (validateEmail() === true) {
+//       eventTarget1.style.visibility = 'hidden';
+//     } else {
+//       console.log('email not valid')
+//     }
+// }
+
+// submitButton.addEventListener('click', submitEmail);
+
+// function email_subscribepopup() {
+//   eventTarget2.style.visibility = 'visible';
+// }
