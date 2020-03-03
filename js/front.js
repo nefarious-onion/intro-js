@@ -1,5 +1,25 @@
 $(function () {
 
+    var pathname = window.location.pathname;
+
+
+    $(document).on('view:HomePage', function(){
+        console.warn('View on [HomePage] tracked');
+    });
+    $(document).on('view:ProductPage', function(){
+        console.warn('View on [ProductPage] tracked');
+    });
+
+    if (pathname === '/index.html' || pathname === '/') {
+        $(document).trigger('view:HomePage');
+    }
+
+    if (pathname === '/detail') {
+        $(document).trigger('view:ProductPage');
+    }
+    
+
+
     $('.shop-detail-carousel').owlCarousel({
         items: 1,
         thumbs: true,
